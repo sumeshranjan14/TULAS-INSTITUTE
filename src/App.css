@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+/* =============================
+      THEME ENGINE
+============================= */
+
+/* Smooth theme transition */
+* {
+  transition: background 0.5s ease, color 0.5s ease, 
+              border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* LIGHT THEME */
+[data-theme='light'] {
+  --background: #f5f7ff;
+  --text-color: #0b2546;
+  --card-bg: rgba(255,255,255,0.75);
+  --card-border: rgba(255,255,255,0.4);
+  --shadow: 0 10px 30px rgba(20,40,80,0.08);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* DARK THEME */
+[data-theme='dark'] {
+  --background: #0c111b;
+  --text-color: #e5e9f0;
+  --card-bg: rgba(20,22,30,0.8);
+  --card-border: rgba(255,255,255,0.15);
+  --shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* AURORA THEME (Beautiful Gradient) */
+[data-theme='aurora'] {
+  --background: linear-gradient(180deg, #112233, #20204f, #2c1255);
+  --text-color: #e8edff;
+  --card-bg: rgba(255,255,255,0.1);
+  --card-border: rgba(255,255,255,0.18);
+  --shadow: 0 10px 45px rgba(50, 0, 120, 0.6);
 }
 
-.App-link {
-  color: #61dafb;
+/* Apply theme */
+body, .app-root {
+  background: var(--background);
+  color: var(--text-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card, .hero-card, .navbar {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  color: var(--text-color);
+}
+
+.nav-pills button {
+  color: var(--text-color);
+}
+
+/* Floating Theme Button */
+.floating-toggle {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.floating-toggle:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0px 18px 40px rgba(0,0,0,0.35);
 }
