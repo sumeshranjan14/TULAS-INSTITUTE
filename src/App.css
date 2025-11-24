@@ -299,3 +299,88 @@ body, .app-root {
     text-align: left;
   }
 }
+/* =============================
+   3D TILT + AURORA GLOW EFFECTS
+============================= */
+
+/* Shared hover animation settings */
+.card,
+.hero-card,
+.navbar,
+.footer,
+.pill,
+.courses-table tr {
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  will-change: transform;
+}
+
+/* 3D Hover effect with neon glow */
+.card:hover,
+.hero-card:hover,
+.footer:hover {
+  transform: perspective(800px) rotateX(6deg) rotateY(-6deg) translateY(-8px);
+  box-shadow: 0 25px 60px rgba(120, 60, 255, 0.45),
+              0 8px 20px rgba(0, 0, 0, 0.4);
+  border-color: rgba(180, 120, 255, 0.55);
+}
+
+/* Navbar hover */
+.nav-pills button:hover {
+  transform: translateY(-3px);
+  color: #b490ff !important;
+  text-shadow: 0 0 8px rgba(150, 80, 255, 0.6);
+}
+
+/* Active nav link hover */
+.nav-pills button.active:hover {
+  transform: translateY(-5px) scale(1.03);
+}
+
+/* Table row hover in courses */
+.courses-table tr:hover {
+  transform: scale(1.02);
+  background: rgba(180, 120, 255, 0.15);
+}
+
+/* Filter pills hover */
+.pill:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: rgba(180, 120, 255, 0.4);
+  box-shadow: 0 10px 25px rgba(150, 80, 255, 0.3);
+}
+
+/* Hero hover enhancement */
+.hero-card:hover {
+  transform: perspective(900px) rotateX(5deg) rotateY(5deg) translateY(-10px);
+  box-shadow: 0 30px 70px rgba(150, 70, 255, 0.45);
+}
+
+/* Campus FAQ hover */
+.faq-question:hover {
+  transform: translateX(6px);
+  color: #caa8ff;
+}
+
+/* Footer hover */
+.footer:hover {
+  box-shadow: 0 20px 50px rgba(160, 80, 255, 0.5);
+  transform: perspective(800px) rotateX(8deg) rotateY(4deg);
+}
+.notice-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(150, 80, 255, 0.35);
+  transition: 0.3s ease;
+}
+/* Enrollment button tweaks */
+.courses-table td button.cta-primary {
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.courses-table td button.pill[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.notice-item:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(150, 80, 255, 0.35); transition: 0.3s ease; }
+
