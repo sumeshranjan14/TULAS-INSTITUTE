@@ -2,17 +2,16 @@
       THEME ENGINE
 ============================= */
 
-/* Smooth theme transition */
 * {
-  transition: background 0.5s ease, color 0.5s ease, 
-              border-color 0.5s ease, box-shadow 0.5s ease;
+  transition: background 0.4s ease, color 0.4s ease, 
+              border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* LIGHT THEME */
 [data-theme='light'] {
   --background: #f5f7ff;
   --text-color: #0b2546;
-  --card-bg: rgba(255,255,255,0.75);
+  --card-bg: rgba(255,255,255,0.6);
   --card-border: rgba(255,255,255,0.4);
   --shadow: 0 10px 30px rgba(20,40,80,0.08);
 }
@@ -21,56 +20,282 @@
 [data-theme='dark'] {
   --background: #0c111b;
   --text-color: #e5e9f0;
-  --card-bg: rgba(20,22,30,0.8);
+  --card-bg: rgba(20,22,30,0.7);
   --card-border: rgba(255,255,255,0.15);
   --shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
 
-/* AURORA THEME (Beautiful Gradient) */
+/* AURORA THEME — PREMIUM GRADIENT */
 [data-theme='aurora'] {
-  --background: linear-gradient(180deg, #112233, #20204f, #2c1255);
-  --text-color: #e8edff;
-  --card-bg: rgba(255,255,255,0.1);
-  --card-border: rgba(255,255,255,0.18);
-  --shadow: 0 10px 45px rgba(50, 0, 120, 0.6);
+  --background: linear-gradient(180deg, #0d0720, #240b45, #450b78);
+  --text-color: #e9e6ff;
+  --card-bg: rgba(255,255,255,0.08);
+  --card-border: rgba(255,255,255,0.22);
+  --shadow: 0 10px 50px rgba(80,0,120,0.6);
 }
 
-/* Apply theme */
+/* GLOBAL APPLY */
 body, .app-root {
   background: var(--background);
   color: var(--text-color);
+  font-family: "Inter", system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.card, .hero-card, .navbar {
+/* =============================
+      LAYOUT CONTAINERS
+============================= */
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.main-area {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Beautiful background glow */
+.background-blob {
+  position: fixed;
+  top: -200px;
+  right: -200px;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(120,20,255,0.4), rgba(40,5,120,0.15), transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+}
+
+/* =============================
+      NAVBAR
+============================= */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 20px;
+  border-radius: 16px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
+  backdrop-filter: blur(14px);
   box-shadow: var(--shadow);
-  color: var(--text-color);
+}
+
+.brand-panel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo img {
+  width: 58px;
+  height: auto;
+  object-fit: contain;
+}
+
+.brand-title .title {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.brand-title .sub {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* NAV BUTTONS */
+.nav-pills {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
 }
 
 .nav-pills button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
   color: var(--text-color);
 }
 
-/* Floating Theme Button */
+.nav-pills button.active {
+  background: linear-gradient(90deg, #7a5cff, #b45cff);
+  color: white !important;
+  box-shadow: 0 8px 20px rgba(120,60,255,0.35);
+}
+
+/* =============================
+      HERO CARD
+============================= */
+
+.hero-card {
+  padding: 32px;
+  border-radius: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.hero-desc {
+  margin-top: 8px;
+  opacity: 0.9;
+}
+
+.hero-cta {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+}
+
+.cta-primary {
+  background: linear-gradient(90deg, #7a5cff, #b45cff);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(120,60,255,0.25);
+}
+
+.cta-primary:hover {
+  transform: translateY(-4px);
+}
+
+.cta-ghost {
+  background: transparent;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  cursor: pointer;
+}
+
+/* =============================
+      GRID LAYOUT
+============================= */
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+@media (max-width: 800px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================
+      CARDS
+============================= */
+
+.card {
+  padding: 22px;
+  border-radius: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+/* =============================
+      TABLES (Courses)
+============================= */
+
+.courses-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+
+.courses-table th,
+.courses-table td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* =============================
+      FILTER PILLS
+============================= */
+
+.pill {
+  padding: 8px 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.pill.active {
+  background: linear-gradient(90deg, #7a5cff, #b45cff);
+  color: white;
+}
+
+/* =============================
+      CAMPUS LIFE GRID
+============================= */
+
+.campus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 16px;
+}
+
+/* =============================
+      FLOATING THEME TOGGLE
+============================= */
+
 .floating-toggle {
   position: fixed;
   right: 26px;
   bottom: 26px;
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  font-size: 25px;
+  font-size: 26px;
   border: none;
   cursor: pointer;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
+  backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  backdrop-filter: blur(8px);
 }
 
 .floating-toggle:hover {
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0px 18px 40px rgba(0,0,0,0.35);
+  transform: translateY(-5px) scale(1.08);
+}
+
+/* =============================
+      RESPONSIVE
+============================= */
+
+@media (max-width: 768px) {
+  .hero-card {
+    flex-direction: column;
+    text-align: left;
+  }
 }
